@@ -10,10 +10,10 @@
                             :width 72
                             :height 94}))
 
-(defonce anim-controler (atom {:curr-frame 0
-                               :mirror ""
-                               :x 0
-                               :y 0}))
+(def anim-controler (atom {:curr-frame 0
+                           :mirror ""
+                           :x (* -1 (:left @grid-config))
+                           :y (* -1 (:top @grid-config))}))
 
 
 (defonce animateid (atom nil))
@@ -88,13 +88,17 @@
     [:input {:type "text"
              :size 3
              :value (:top @grid-config)
-             :on-change #(swap! grid-config assoc :top (-> % .-target .-value int))}]]
+             :on-change #(do
+                           (swap! grid-config assoc :top (-> % .-target .-value int))
+                           (swap! animate-preview assoc :y (-> % .-target .-value int)))}]]
    [:div
     [:label "Left: "]
     [:input {:type "text"
              :size 3
              :value (:left @grid-config)
-             :on-change #(swap! grid-config assoc :left (-> % .-target .-value int))}]]
+             :on-change #(do
+                           (swap! grid-config assoc :left (-> % .-target .-value int))
+                           (swap! animate-preview assoc :x (-> % .-target .-value int)))}]]
 
    (animate-preview)])
 
