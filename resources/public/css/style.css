@@ -1,0 +1,14 @@
+/* some style */
+
+.controler {
+    width: 20%;
+    position: relative;
+    float: left;
+}
+
+.grids {
+    width: 70%;
+    position: relative;
+    float: left;
+    height: 100%;
+}
