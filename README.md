@@ -1,6 +1,5 @@
 # pncgame
-
-FIXME: Write a one-line description of your library/project.
+Brincando com sprites no clojurescript
 
 ## Overview
 
